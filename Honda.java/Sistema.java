@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Sistema {
     private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
@@ -11,9 +10,27 @@ public class Sistema {
     public static void buscarFuncionario(String nome) {
         for (Funcionario funcionario : funcionarios) {
             if (funcionario.getNome().equals(nome)) {
-                System.out.println("funcionario encontrado:" + funcionario.getNome());
+                System.out.println("Funcionário encontrado: " + funcionario.getNome());
                 return;
             }
         }
-        System.out.println("Funcionario não encontrado.");
+        System.out.println("Funcionário não encontrado.");
     }
+
+    public static void excluirFuncionario(String nome) {
+        funcionarios.removeIf(f -> f.getNome().equals(nome));
+        System.out.println("Funcionário removido: " + nome);
+    }
+
+    public static void listarFuncionarios() {
+        System.out.println("Lista de funcionários:");
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println("ID: " + funcionario.getId() + ", Nome: " + funcionario.getNome() + ", CPF: " + funcionario.getCpf() + ", Salário: " + funcionario.getSalario());
+        }
+    }
+
+    public static void excluirTodosFuncionarios() {
+        funcionarios.clear();
+        System.out.println("Todos os funcionários removidos.");
+    }
+}
